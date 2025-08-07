@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu {
+            list-style-type: none; /* 隱藏項目符號 */
+            padding: 0; /* 移除內邊距 */
+        }
+    </style>
+</head>
+<body>
+    <button id="toggleButton" aria-controls="menu" aria-expanded="false">Toggle Menu</button>
+    <ul id="menu" hidden>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script>
+        const button = document.getElementById('toggleButton');
+        const menu = document.getElementById('menu');
+
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', !isExpanded);
+            menu.hidden = isExpanded; // 切換隱藏狀態
+        });
+    </script>
+</body>
+</html>
