@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; /*這樣可以確保元素的寬度和高度包括內邊距和邊框。 */
+    text-decoration: none; /* 去除下劃線 */
+}
+    /* .ck1:checked{
+        width: 20px;
+        height: 20px;
+    } */
+    table{
+        border-collapse: collapse; /* 啟用邊框合併 */
+    }
+    #box1 td{
+        padding: 5px;
+    }
+    .box2 td{
+        border: 1px solid #000;
+        /* border-collapse: collapse; 啟用邊框合併 */
+        padding: 5px;
+    }
+    #box1{
+        /* border: 1px solid aqua; */
+        background-color: aqua;
+    }
+</style>
+<body>
+    <table>
+        <tr id="box1">
+            <td><input type="checkbox" id="ck">全選</td>
+            <td>牌子</td>
+            <td>價格</td>
+            <td>產品</td>
+        </tr>
+        <tr class="box2">
+            <td><input type="checkbox" class="ck1"></td>
+            <td>小米</td>
+            <td>3200</td>
+            <td>小米手機</td>
+        </tr>
+        <tr class="box2">
+            <td><input type="checkbox" class="ck1"></td>
+            <td>oppo</td>
+            <td>4000</td>
+            <td>炸機</td>
+        </tr>
+        <tr class="box2">
+            <td><input type="checkbox" class="ck1"></td>
+            <td>蘋果</td>
+            <td>7999</td>
+            <td>手機</td>
+        </tr>
+    </table>
+    <script>
+        const check = document.querySelector("#box1 input")
+        const ck = document.querySelectorAll(".ck1")
+        check.addEventListener("click",function(){
+            console.log(11);
+            for(let i=0; i<ck.length;i++){
+                ck[i].checked=check.checked
+               
+            }
+            
+        })
+        for(let i=0 ; i<ck.length ;i++){
+
+            ck[i].addEventListener("click",function(){
+                check.checked=document.querySelectorAll(".ck1:checked").length === ck.length
+            })
+        }
+    </script>
+</body>
+</html>

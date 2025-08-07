@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    html{
+        background-color: aliceblue;
+    }
+    .b1{
+        width: 500px;
+        height: 500px;
+        background-color: white;
+        display: flex;
+        border: 1px solid #000;
+    }
+    .b2{
+        width: 350px;
+        height: 350px;
+        background-color: red;
+    }
+    .b3{
+        width: 100px;
+        height: 500px;
+    }
+    .b3 ul{
+        list-style-type: none; /* 去除預設的標頭樣式 */
+    }
+    .b3 li{
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        margin-left: 20px;
+    }
+    .b3 li img{
+        width: 100px;
+        height: 100px;
+       
+    }
+    .active{
+        border: 2px solid #B2FBA5
+;
+    }
+</style>
+<body>
+    <div class="b1">
+        <div class="b2"><img class="g1" src="../ck3.jpg" alt=""></div>
+        <div class="b3">
+            <ul>
+                <li>
+                    <img class="active" src="../ck3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../ck4.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../ck5.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../ck6.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const g1 = document.querySelector(".g1")
+        const img =  document.querySelectorAll(".b3 img")
+        const active = document.querySelector(".active")
+        function gz(e){
+            img.forEach(i =>i.classList.remove("active"))
+            e.target.classList.add("active")
+            g1.src = e.target.src
+        }
+        img.forEach(i=>{
+            i.addEventListener("mouseover",gz) 
+            i.addEventListener("click",gz)
+        })
+        
+        
+
+    </script>
+</body>
+</html>

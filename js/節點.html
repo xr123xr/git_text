@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    body{
+       
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平居中 */
+    flex-direction: column; /* 設置為垂直排列 */
+
+    }
+    .a1{
+        width: 500px;
+        height: 200px;
+        background-color: pink;
+        display: flex;
+         justify-content: flex-end; /*將內容靠右對齊 */
+         margin-top: 20px;
+        
+         
+    }
+    .a2{
+        width: 20px;
+        height: 20px;
+        background-color: aliceblue;
+        text-align: center;
+        cursor: pointer; /* 懸停時變為手形光標 */
+    }
+</style>
+<body>
+    <div class="a1">
+        <p>廣告</p>
+        <div class="a2">x</div>
+        
+    </div>
+    <div class="a1">
+        <div class="a2">x</div>
+        <p>廣告</p>
+    </div>
+    <div class="a1">
+        <div class="a2">x</div>
+        <p>廣告</p>
+    </div>
+    <script>
+        // const a1 = document.querySelector(".a1")
+        const a2 = document.querySelectorAll(".a2")
+        a2.forEach(function(a2){
+            a2.addEventListener("click",function(){
+                this.parentNode.style.display="none"
+            })
+            
+        })
+    </script>
+</body>
+</html>

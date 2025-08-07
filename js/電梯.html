@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        .a1_d1 {
+            width: 500px;
+            height: 700px;
+            background-color: blanchedalmond;
+            margin: 0px 25%;
+        }
+        .a2 {
+            width: 80px;
+            height: 150px;
+            background-color: aqua;
+            position: fixed;
+            top: 50px;
+            right: 60px;
+            opacity: 0;
+            transition: opacity 0.5s ease; /* 漸變效果 */
+        }
+        .a2 ul {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none; /* 去除預設的標頭樣式 */
+            flex-direction: column; /* 設置為垂直排列 */
+            text-align: center;
+        }
+        .a2 li {
+            flex: 1;
+            border: 1px solid #000;
+        }
+        .a2 a {
+            color: #000;
+            text-decoration: none; /* 去除下劃線 */
+        }
+        .a1_a, .a1_b, .a1_c {
+            width: 600px;
+            height: 500px;
+            margin-top: 50px;
+        }
+        .a1_a { background-color: aquamarine; }
+        .a1_b { background-color: red; }
+        .a1_c { background-color: pink; }
+        .a2 a.active{
+            color: red;/* 文字顏色 */
+            font-weight: bold; /* 加粗字體 */
+            background-color: rgba(0, 255, 255, 0.3); /* 背景顏色 */
+        }
+    </style>
+</head>
+<body>
+    <div class="a1_d">1</div>
+    <div class="a1_a">2</div>
+    <div class="a1_b">3</div>
+    <div class="a1_c">4</div>
+    <div class="a2">
+        <ul>
+            <li><a href="#" data-name="a">頭部</a></li>
+            <li><a href="#" data-name="c">中間</a></li>
+            <li><a href="#" id="a">返回</a></li>
+        </ul>
+    </div>
+    <script>
+        (function() {
+            const a2 = document.querySelector(".a2");
+            window.addEventListener("scroll", function() {
+                const n = window.scrollY; // 使用 window.scrollY
+                a2.style.opacity = n >= 300 ? 1 : 0; // 簡化條件
+            });
+
+            const back = document.querySelector("#a");
+            back.addEventListener("click", function(e) {
+                e.preventDefault(); // 防止默認行為
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // 平滑滾動回頂部
+            });
+        })();
+
+        (function() {
+            const names = document.querySelectorAll(".a2 a");
+            names.forEach(function(name) {
+                name.addEventListener("click", function(e) {
+                    if(e.target.tagName==="A" && e.target.dataset.name ){
+                        e.preventDefault(); // 防止默認行為
+                        const old = document.querySelector(".a2 a.active");
+                        if (old) old.classList.remove("active");
+                        this.classList.add("active");
+                        console.log(e.target.dataset.name);
+                        const top = document.querySelector(`.a1_${e.target.dataset.name}`).offsetTop;
+                        document.documentElement.scrollTop = top 
+                    }
+                });
+            });
+
+            window.addEventListener("scroll",function(){
+                const old = document.querySelector(".a2 a.active")
+                if(old)old.classList.remove("active")
+
+                const news = document.querySelector(".a1_a")
+                const news2 = document.querySelector(".a1_c")
+                const news3 = document.querySelector(".a1_b")
+                const news4 = document.querySelector(".a1_d")
+                const n = document.documentElement.scrollTop
+                if(n >= news.offsetTop && n<news3.offsetTop){
+                    document.querySelector(`[data-name=a]`).classList.add("active")
+                }else if(n>=news2.offsetTop){
+                    document.querySelector(`[data-name=c]`).classList.add("active")
+                }
+
+            })
+        })();
+    </script>
+</body>
+</html>

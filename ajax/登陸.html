@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .login-form input {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .login-form button {
+            padding: 8px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <form class="login-form" action="">
+        <p>登陸</p>
+        <input class="username" type="text" placeholder="用戶名" required>
+        <input class="password" type="password" placeholder="密碼" required>
+        <button class="sub" type="submit">提交</button>
+    </form>
+    <script>
+        document.querySelector('.sub').addEventListener('click', (event) => {
+            event.preventDefault(); // 阻止表單提交
+
+            const username = document.querySelector('.username').value; // 獲取用戶名
+            const password = document.querySelector('.password').value; // 獲取密碼
+
+            if (username.length < 8 || username.length > 20) {
+                return alert('用戶名長度不符合要求');
+            }
+            if (password.length < 8 || password.length > 20) {
+                return alert('密碼長度不符合要求');
+            }
+
+            axios({
+                method: 'post',
+                url: 'http://hmajax.itheima.net/api/login',
+                data: {
+                    username,
+                    password
+                }
+            }).then(results => {
+                console.log(results); // 輸出結果
+                alert(results.data.message); // 輸出消息
+            }).catch(error => {
+                console.error('Error:', error); // 錯誤處理
+            });
+        });
+    </script>
+</body>
+</html>

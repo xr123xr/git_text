@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .form-group {
+        margin-bottom: 1rem;
+        display: flex;
+    }
+    .form-group p {
+        margin: 0.5rem 0;
+    }
+    #popular-areas {
+      color: red;
+    }
+</style>
+<body>
+    <h1>學習反饋</h1>
+    <div class="form-group">
+            <p id="popular-areas">熱門地區</p>
+            <p>上海</p>
+            <p>北京</p>
+            <p>廣州</p>
+            <p>深圳</p>
+        </div>
+    <form class="dataform" action="">
+        <div class="form-group">
+            <label for="location">選擇省份</label>
+            <select id="location" name="location">
+                <option value=""></option>
+                
+            </select>
+
+            <label for="nickname">選擇城市</label>
+            <section>
+                <select class="city" name="cityname">
+                    <option value=""></option>
+                    
+                </select>
+            </section>
+            <label for="nickname">選擇地區</label>
+            <section>
+                <select class="area" name="nickname">
+                    <option value=""></option>
+                    
+                </select>
+            </section>
+        </div>
+        <div class="form-group">
+            <p>學員暱稱</p>
+            <input type="text" id="nickname" name="nickname" placeholder="請輸入暱稱">
+        </div>
+        <div>
+            <p>學習反饋</p>
+            <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="請輸入您的反饋"></textarea>
+    </form>
+    <button class="submit-btn">提交</button>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.0/axios.min.js"></script>
+<script>
+    function serialize(form) {
+        const formData = new FormData(form);
+        const obj = {};
+        formData.forEach((value, key) => {
+            obj[key] = value;
+        });
+        return obj;
+    }
+
+    axios({
+        url: 'http://hmajax.itheima.net/api/province'
+    }).then(results => {
+        const pobj = results.data.list.map(pname => {
+            return `<option value="${pname}">${pname}</option>`;
+        }).join('');
+        document.querySelector('#location').innerHTML = `<option value="">省份</option>` + pobj;
+    });
+
+    document.querySelector('#location').addEventListener('change', async e => {
+        const results = await axios({
+            url: 'http://hmajax.itheima.net/api/city',
+            params: {
+                pname: e.target.value
+            }
+        });
+        const cityList = results.data.list.map(cname => 
+            `<option value="${cname}">${cname}</option>`).join('');
+        document.querySelector('.city').innerHTML = `<option value="">城市</option>` + cityList;
+        document.querySelector('.area').innerHTML = `<option value="">地區</option>`;
+    });
+
+    document.querySelector('.city').addEventListener('change', async e => {
+        const results = await axios({
+            url: 'http://hmajax.itheima.net/api/area',
+            params: {
+                pname: document.querySelector('#location').value,
+                cname: e.target.value
+            }
+        });
+        const areaList = results.data.list.map(aname =>
+            `<option value="${aname}">${aname}</option>`).join('');
+        document.querySelector('.area').innerHTML = `<option value="">地區</option>` + areaList;
+    });
+
+    document.querySelector('.submit-btn').addEventListener('click', async e => {
+        e.preventDefault();
+        const form = document.querySelector('.dataform');
+        const formData = serialize(form);
+        const { nickname, feedback, location, city, area } = formData;
+
+        // if (!nickname || !feedback || !location || !city || !area) {
+        //     alert('請填寫完整信息');
+        //     return;
+        // }
+
+        try {
+            const response = await axios({
+                method: 'post',
+                url: 'http://hmajax.itheima.net/api/feedback',
+                data: {
+                    nickname,
+                    feedback,
+                    location,
+                    city,
+                    area
+                }
+            });
+            alert('提交成功');
+            console.log(response.data.message);
+        } catch (error) {
+            alert('提交失敗');
+            console.error(error);
+        }
+    });
+</script>
+
+
+    </script>
+</body>
+</html>

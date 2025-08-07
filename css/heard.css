@@ -1,0 +1,78 @@
+/* 重置所有元素的樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局字體設定 */
+html {
+    font-size: 100%; /* 基本字體大小 */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5; /* 行高 */
+    color: #333; /* 字體顏色 */
+}
+
+/* 標題樣式 */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+/* 段落樣式 */
+p {
+    margin: 0 0 1em; /* 段落底部邊距 */
+}
+
+/* 清單樣式 */
+ul, ol {
+    margin: 0 0 1em 2em; /* 清單的邊距 */
+    text-decoration: none
+}
+
+/* 錨點樣式 */
+a {
+    text-decoration: none; /* 去掉下劃線 */
+    color: inherit; /* 繼承顏色 */
+}
+
+/* 表格樣式 */
+table {
+    border-collapse: collapse; /* 合併邊框 */
+    width: 100%; /* 全寬 */
+}
+
+th, td {
+    padding: 0.5em; /* 內邊距 */
+    text-align: left; /* 左對齊 */
+}
+
+/* 輪播樣式 */
+img {
+    max-width: 100%; /* 圖片最大寬度 */
+    height: auto; /* 自動高度 */
+}
+
+/* 其他元素 */
+button, input, select {
+    font-family: inherit; /* 繼承字體 */
+}
+
+/* 頁腳樣式 */
+footer {
+    text-align: center; /* 中心對齊 */
+    padding: 1em 0; /* 上下內邊距 */
+}
+/* 消除網頁邊距 */
+html, body {
+    margin: 0; /* 設定邊距為0 */
+    padding: 0; /* 設定內邊距為0 */
+    width: 100%; /* 設定寬度為100% */
+    height: 100%; /* 設定高度為100% */
+}
+* {
+    box-sizing: border-box;
+}

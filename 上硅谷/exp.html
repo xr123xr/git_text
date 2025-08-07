@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="ml"></p>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://hmajax.itheima.net/api/province');
+        xhr.addEventListener('loadend', () => {
+           console.log(xhr.response);
+           const data = JSON.parse(xhr.response);
+        //    const ml = document.querySelector('.ml');
+           document.querySelector('.ml').innerHTML = data.list.join('<br>');
+        });
+        xhr.send()
+    </script>
+</body>
+</html>

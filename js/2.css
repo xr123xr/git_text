@@ -1,0 +1,52 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; /*這樣可以確保元素的寬度和高度包括內邊距和邊框。 */
+    text-decoration: none; /* 去除下劃線 */
+}
+
+.box1{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column; /* 設置為垂直排列 */
+}
+.box2{
+    flex: 1;
+    display: flex;
+}
+.box3{
+    flex: 2;
+}
+.box4{
+    flex: 4;
+}
+.box4 ul{
+    list-style-type: none; /* 去除預設的標頭樣式 */
+    display: flex;
+   
+
+
+}
+.box4 ul li{
+    padding: 10px;  
+    padding-top: 20px;  
+}
+.box4 ul li a{
+    color: #000;
+    font-weight: 200;
+}
+.box6{
+    flex: 4;
+}
+.box4 ul li a.active{
+    color: red;
+    border-bottom: 2px solid red; /* 設置下邊框 */
+}
+
+.item{
+    display: none;
+}
+.item.active{
+    display: block;
+}

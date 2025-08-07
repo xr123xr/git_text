@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="resu"></p>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://hmajax.itheima.net/api/province');
+
+            // 將 xhr.send() 移動到事件處理之外
+            xhr.addEventListener('loadend', () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(JSON.parse(xhr.response));
+                } else {
+                    reject(new Error(xhr.response));
+                }
+            });
+
+            // 在這裡發送請求
+            xhr.send();
+        });
+
+        // 正確地處理 Promise 的結果
+        p.then(results => {
+            console.log('成功', results);
+            document.querySelector('.resu').innerHTML = results.list.join('<br>');
+        }).catch(error => {
+            console.error('失敗', error);
+        });
+    </script>
+</body>
+</html>

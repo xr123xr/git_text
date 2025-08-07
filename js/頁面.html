@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: beige;
+    }
+    .box{
+        width: 300px;
+        height: 350px;
+        margin: 0px auto;
+        background-color: white;
+        
+    }
+    .b2{
+        width: 300px;
+        height: 40px;
+        display: flex;
+    }
+    .zc{
+        margin: 10px 100px 10px 30px;
+        text-decoration: none; /* 去除下劃線 */
+        color: black;
+        width: 70px;
+        height: 30px;
+        text-align: center;
+
+    }
+    .zc1{
+        margin: 10px 0px 10px 0px;
+        text-decoration: none; /* 去除下劃線 */
+        color: black;
+        width: 80px;
+        height: 30px;
+        text-align: center;
+
+    }
+    .active{
+          border-bottom: 3px solid black; /* 添加下滑線 */
+    }
+    .b3{
+        width: 250px;
+        height: 250px;
+        margin: 0px auto;
+        
+        /* display: none; */
+
+    }
+    .box5 input{
+        width: 220px;
+        height: 50px;
+        border: 1px solid #000;
+        display: flex;           /* 使用 flexbox */
+        justify-content: center; /* 水平置中 */
+        align-items: center;
+        flex-direction: column; /* 設置為垂直排列 */
+        margin: 20px auto;
+    }
+    #tg{
+        width: 100px;
+        height: 50px;
+        background-color: aquamarine;
+        
+        font-size: 16px;
+    }
+    .box2{
+        display: flex;           /* 使用 flexbox */
+        justify-content: center; /* 水平置中 */
+        align-items: center;     /* 垂直置中 */
+        width: 220px;
+        height: 70px;
+        margin: 0 auto;         /* 自動外邊距 */
+    }
+    .box5{
+        margin: 0px auto;
+        display: block;
+    }
+    .m2{
+        width: 230px;
+        height: 230px;
+        display: none;
+        margin: 30px auto;
+    }
+</style>
+<body>
+    <div class="box">
+         <div class="b2">
+            <a class="zc active" href="#">密碼登入</a>
+            <a class="zc1" href="#">二維碼登入</a>
+         </div>
+         <form class="b3" action="#">
+            <div class="box5">
+                <input type="text" placeholder="只能由字母、数字组成，1-9位" name="usname">
+
+                <span class="p1"></span>
+                <input type="password" placeholder="由字母、数字、特殊字符，任意2种组成，1-9位" name="paw">
+
+                <span class="p2"></span>
+                <div class="box2">
+                    <input id="tg" type="submit" value="提交">
+                </div>
+            </div>    
+            <div class="m2">
+                <img src="../ck5.jpg" alt="二維碼">
+            </div>    
+         </form>
+    </div>
+    <script>
+        const usname = document.querySelector("[name=usname]");
+    const paw = document.querySelector("[name=paw]");
+    const arr = /^(?=.*\d)(?=.*[A-z])[\da-zA-Z]{1,9}$/;
+    const paww = /^(?![a-zA-Z]+$)(?!\d+$)(?![^\da-zA-Z\s]+$).{1,9}$/;
+
+    // blur 驗證提示
+    usname.addEventListener("blur", function () {
+        if (arr.test(usname.value)) {
+            document.querySelector(".p1").innerHTML = "可用";
+        } else {
+            document.querySelector(".p1").innerHTML = "不可用";
+        }
+    });
+
+    paw.addEventListener("blur", function () {
+        if (paww.test(paw.value)) {
+            document.querySelector(".p2").innerHTML = "可用";
+        } else {
+            document.querySelector(".p2").innerHTML = "不可用";
+        }
+    });
+
+    // 登入方式切換
+    const b2 = document.querySelector(".b2");
+    const box5 = document.querySelector(".box5");
+    const m2 = document.querySelector(".m2");
+    b2.addEventListener("click", function (e) {
+        if (e.target.tagName === 'A') {
+            document.querySelector(".active").classList.remove("active");
+            e.target.classList.add("active");
+        }
+
+        if (e.target.textContent === "密碼登入") {
+            m2.style.display = "none";
+            box5.style.display = "block";
+        } else {
+            box5.style.display = "none";
+            m2.style.display = "block";
+        }
+    });
+
+    // 表單提交驗證 + 跳轉
+    const form = document.querySelector('.b3');
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // 防止預設提交
+
+        const usernameValid = arr.test(usname.value);
+        const passwordValid = paww.test(paw.value);
+
+        if (!usname.value || !paw.value || !usernameValid || !passwordValid) {
+            alert("請輸入正確的帳號密碼");
+            return;
+        }
+
+        // 儲存到 localStorage
+        localStorage.setItem("name", usname.value);
+        localStorage.setItem("url", "file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99%E5%A4%BE/html/js/%E9%A0%81%E9%9D%A22.html");
+
+        // 進行重定向
+        window.location.href = localStorage.getItem("url");
+    });
+    
+        
+        
+
+    </script>
+</body>
+</html>

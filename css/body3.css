@@ -1,0 +1,75 @@
+.dy1{
+    position: relative;
+    top: 200px;
+    left: 150px;
+    width: 988px;
+    height: 553px;
+}
+.dy2{
+    width: 80%;
+    height: 200px;
+    position: relative;
+    top: 200px;
+    left: 150px;
+   
+
+}
+.dy3{
+    width: 80%;
+    height: 50%; 
+    display: flex;
+    margin-left: auto; /* 使盒子靠右 */
+    background-color: rgb(250, 249, 240);
+    box-shadow: 5px 5px 3px rgb(0, 0, 0, 0.1);
+}
+
+.dy4{
+    width: 100%;
+    height: 100%;
+    padding: 25px 0px;
+    text-align: center; /* 將文本置中 */
+    position: relative; /* 使其能夠相對定位 */
+   }
+.dy4::after {
+    content: ""; /* 這是必須的，讓伪元素顯示 */
+    position: absolute; /* 絕對定位 */
+    right: 0; /* 靠右 */
+    top: 25px; /* 從頂部開始 */
+    height: 50%; /* 調整豎線的高度 */
+    width: 1px; /* 豎線的寬度 */
+    background-color: rgb(201, 143, 37); /* 豎線顏色 */
+}
+.dy5{
+   width: 100%;
+   height: 100%;
+   display: flex;
+   padding: 25px 0px;
+
+}
+.dy4 h3{
+    font-size: 35px;
+    color: rgb(201, 143, 37);
+}
+.dy5 img{
+    margin-left:5px ;
+    width: 40px;
+
+}
+.dy5 h3{
+    color: rgb(147, 111, 47);
+    font-size: 20px;
+    margin-left: 10px;
+}
+.dy5 h3 span{
+    
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+#by99{
+    width: 200px;
+    margin-top: -70px;
+}
+#by98{
+    width: 200px;
+    margin-top: -50px;
+}

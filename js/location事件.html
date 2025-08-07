@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="a1">刷新</button>
+    <a href="https://www.ptt.cc/bbs/ArenaOfValor/index.html">自動跳轉<span>5</span></a>
+    <script>
+        const a1 = document.querySelector(".a1")
+        a1.addEventListener("click",function(){
+            location.reload()
+        })
+        const a = document.querySelector("a")
+        let num = 5
+        let timeId = setInterval(function(){
+            num--
+            a.innerHTML = `自動跳轉<span>${num}</span>`
+            if(num===0){
+                clearInterval(timeId)
+                location.href = "https://www.ptt.cc/bbs/ArenaOfValor/index.html"
+            } 
+        },1000)
+    </script>
+</body>
+</html>   

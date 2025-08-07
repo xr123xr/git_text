@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a class="a1" href="#">登陸</a>|
+    <a class="a2" href="file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99%E5%A4%BE/html/js/%E9%A0%81%E9%9D%A23.html">免費註冊</a>
+    <a href="">asd</a>|
+    <a href="">sgfdfs</a>
+    <img src="../ck4.jpg" alt="">
+    <script>
+        const a1 = document.querySelector(".a1")
+        const a2 = document.querySelector(".a2")
+        const uname = localStorage.getItem("name")
+
+        function as(){
+            if(uname){
+                a1.innerHTML =  uname
+                a2.innerHTML = '退出登陸'
+            }else{
+                a1.innerHTML = '<a class="a1" href="#">登陸</a>'
+                a2.innerHTML = '<a class="a2" href="file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99%E5%A4%BE/html/js/%E8%A8%BB%E5%86%8A%E4%BA%8B%E4%BB%B6.html">免費註冊</a>'
+            }
+            
+        }
+        as()
+        a2.addEventListener("click",function(){
+            localStorage.removeItem("name")
+            as()
+        })
+    </script>
+</body>
+</html>

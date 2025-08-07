@@ -1,0 +1,167 @@
+.bo41{
+    width: 90%;
+    position: relative; /* 絕對定位 */
+    top: 230px;
+    margin: 0px auto;
+}
+.bo42{
+    display: flex;
+    list-style: none; /* 去掉標頭 */
+    width: 100%;
+    margin: 0px;
+}
+.bo42 li{
+    width: 100%;
+    height: 30px;
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: rgb(238, 238, 238)
+}
+.bo42 li a{
+    font-weight: 700;
+    font-size: 16px;
+    font-family: "Noto Serif TC";
+}
+#bo43{
+    background-color: rgb(193, 149, 70);
+    color: rgb(255, 255, 255)
+}
+.bo44{
+    width: 100%;
+    padding: 15px 5px;
+}
+.bo44 p{
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Noto Serif TC",;
+    color: #000;
+}
+#bo45{
+    padding-top: 10px;
+    font-size: 20px;
+}
+.bo50{
+    width: 100%;
+    height: 190px;
+    display: flex;
+}
+.bo46{
+    width: 20%;
+    height: 190px;
+    display: flex;
+    margin-left: 20px;
+    
+}
+.bo46 p , .bo46 h2{
+     writing-mode: vertical-rl; /*垂直從右到左 */
+    /* transform: rotate(180deg); 旋轉180度使其從上到下顯示 */
+}
+.bo47{
+    color: rgb(143, 146, 158);
+    font-size: 20px;
+}
+.bo48{
+    color: rgb(201, 143, 37);
+    font-size: 38px;
+    font-family: Arial;
+}
+.bo49{
+    width: 80%;
+    height: 190px;
+    display: flex;
+}
+.bo51{
+    width: 50%;
+    height: 100%;
+}
+.bo51 h3,.bo52 h3{
+    font-size: 30px;
+}
+.bo51 ul,.bo52 ul{
+    width: 100%;
+    height: 30%;
+    list-style: none; /* 去掉標頭 */
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    flex-wrap: wrap; /* 允許換行 */
+}
+ 
+.bo51 ul li,.bo52 ul li{
+    /* width: 20%; */
+    font-size:20px;
+    color: rgb(102, 102, 102);
+    font-weight: 400;
+    font-family: "Noto Serif TC";
+}
+
+.bo52{
+    width: 50%;
+    height: 100%;
+}
+.bo51 ul span,.bo52 ul span{
+    padding: 0px 7px;
+}
+
+.bo53{
+    width: 100%;
+    display: flex;
+}
+ 
+.bo54{
+    width: 30%;
+    height: 400px;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.bo56{
+    width: 70%;
+    height: 400px;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+.bo55{
+    width: 30%;
+    height: 60%;
+    background-color: rgb(201, 143, 37);
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    box-shadow: 5px 5px 3px rgb(0, 0, 0, 0.2);
+}    
+.bo55 h4{
+    writing-mode: vertical-rl; /*垂直從右到左 */
+    font-size: 35px;
+    color: rgb(238, 238, 238);
+}
+.bo57{
+   width: 40%;
+   height: 90%;
+   background-color: #ffffe5;
+   box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2);
+     display: flex;
+    justify-content: center; /*水平居中  */
+    align-items: center; /*垂直居中 */
+}
+.bo58{
+    width:90%;
+    height: 90%;
+    padding: 12px;
+    border: 1px solid rgb(149, 128, 92);
+}
+.bo58 ul li{
+    font-size: 19px;
+    color: rgb(149, 128, 92);
+}
+.bo59{
+    width: 100%;
+    height: 200px;
+    background-color: #FFFFF0;
+    position: relative;
+    top: 300px;
+    display: flex;
+}

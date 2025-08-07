@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        text-decoration: none; /* 去除下劃線 */
+    }
+    .mi{
+        margin-top: 30px ;
+        margin-left: 100px;
+        width: 162px; 
+        height: 150px;
+    }
+    .mi input{
+        width: 100%; /* 使輸入框寬度填滿父容器 */
+        height: 20px; /* 設定高度 */
+        font-size: 16px; /* 設定字體大小 */
+        
+        border: 1px solid rgb(211, 211, 211); /* 設定初始邊框 */
+    }
+    .ul{
+        display: flex;
+        flex-direction: column; /* 設置為垂直排列 */
+        list-style-type: none; /* 去除預設的標頭樣式 */
+        display: none;
+        border: 1px solid rgb(211, 211, 211);
+        transition: all 0.3s;
+    }
+    .ul li a{
+        color: black;
+    }
+    .ul li a:hover {
+            background-color: rgb(230, 230, 230); /* 增加懸停效果 */
+        }
+</style>
+<body>
+
+    <div class="mi">
+        <input type="text" id="myInput" placeholder="請輸入文字">
+        <ul class="ul">
+            <li><a href="#">電腦</a></li>
+            <li><a href="#">手機</a></li>
+            <li><a href="#">雞排</a></li>
+            <li><a href="#">炸機</a></li>
+            <li><a href="#">貢丸</a></li>
+        </ul>
+    </div>
+    <script>
+        const input = document.querySelector("#myInput")
+        const ul = document.querySelector(".ul")
+        input.addEventListener("focus",function(){
+            ul.style.display="flex"
+            ul.style.border = "1px solid red"; // 恢復原來的邊框顏色
+            // input.style.border = "1px solid red";
+        })
+        input.addEventListener("blur",function(){
+            ul.style.display="none"
+            
+        })
+
+
+    </script>
+</body>
+</html> 

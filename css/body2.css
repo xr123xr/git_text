@@ -1,0 +1,110 @@
+.a31 {
+    display: none;
+    width: 100%;  /*使用 100% */
+    height: 148px;
+    position: absolute;
+    overflow: hidden;
+    background-color: rgb(255, 235, 205);
+    top: 90px; /* 確保在 .a1 之下 */
+    left: 0; /* 確保從左邊開始 */
+    padding: 40px; /* 添加內邊距 */
+    pointer-events:none; /* 使其不阻止點擊 */
+}
+
+.a32, .a35, .a39, .a40 {
+    width: 262px;
+    height: 68px;
+    display: flex; /*flex使用   來排列圖片和文字 */
+    margin:0px;
+    white-space: nowrap; /* 防止換行 */  
+    
+}
+.a33 , .a36, .a37, .a38{
+    width: 106px;
+    height: 47px;
+    margin-top: 10px;
+    flex: 1;
+}
+
+.a32 p, .a35 p, .a39 p, .a40 p{
+    padding: 10px;
+    margin-top: 10px;
+    flex: 1;
+    
+}
+#z2 , #z3, #z4, #z5{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+
+}
+#z2::after {
+    content: ""; /* 必須設置 content 屬性 */
+    display: block; /* 將內容顯示為塊元素 */
+    height: 1px; /* 細線的高度 */
+    background-color: rgba(128, 128, 128,0.5); /* 細線的顏色 */
+    width: 250px; /* 細線的寬度 */
+    position: absolute; /* 絕對定位 */
+    bottom: 0; /* 將細線放在容器底部 */
+    left: 20px; /* 從左側開始 */
+}
+
+#z3::after {
+    content: ""; /* 必須設置 content 屬性 */
+    display: block; /* 將內容顯示為塊元素 */
+    height: 1px; /* 細線的高度 */
+    background-color: rgba(128, 128, 128,0.5); /* 細線的顏色 */
+    width: 250px; /* 細線的寬度 */
+    position: absolute; /* 絕對定位 */
+    bottom: 0; /* 將細線放在容器底部 */
+    
+}
+    
+#z4::after {
+    content: ""; /* 必須設置 content 屬性 */
+    display: block; /* 將內容顯示為塊元素 */
+    height: 1px; /* 細線的高度 */
+    background-color: rgba(128, 128, 128,0.5); /* 細線的顏色 */
+    width: 250px; /* 細線的寬度 */
+    position: absolute; /* 絕對定位 */
+    bottom: 0; /* 將細線放在容器底部 */
+    
+}
+#z5::after {
+    content: ""; /* 必須設置 content 屬性 */
+    display: block; /* 將內容顯示為塊元素 */
+    height: 1px; /* 細線的高度 */
+    background-color: rgba(128, 128, 128,0.5); /* 細線的顏色 */
+    width: 250px; /* 細線的寬度 */
+    position: absolute; /* 絕對定位 */
+    bottom: 0; /* 將細線放在容器底部 */
+    
+}
+.a31 ul{
+    width: 100%; /* 使 ul 寬度為 100% */
+    height: 100%; /* 確保 ul 高度為 100% */
+    margin: 0;   /* 移除外邊距 */
+    padding: 0;  /* 移除內邊距 */
+    display: flex; 
+    justify-content: space-between; /* 均勻分配空間 */
+    list-style-type: none; /* 移除項目符號 */
+    position: relative;
+}
+
+
+.a32 .a35, .a39, .a40 {
+    display: flex; /* 使用 flex 來排列內容 */
+    align-items: center; /* 垂直居中對齊 */
+    white-space: nowrap; /* 防止換行 */
+}
+.a31 ul li {
+    flex: 1; /* 確保每個項目均分可用空間 */
+    display: flex; /* 使 li 內部元素使用 flex */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    height: 100%;
+}
+.z1 li:hover .a31 {
+    display: block; /* 懸停時顯示子菜單 */
+    pointer-events: auto; /* 懸停時允許點擊 */
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a1 {
+            width: 700px;
+            height: auto;
+            margin: 0px auto;
+            justify-content: center;
+            align-items: center;
+        }
+        .a1 form {
+            display: flex;
+            align-items: center; /* 置中 */
+        }
+        .a1 p {
+            text-align: center;
+        }
+        .a2 {
+            width: 700px;
+            height: auto;
+            margin: 0px auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid rgb(233, 233, 233);
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const gender = document.getElementById("gender").value;
+            const city = document.getElementById("city").value;
+
+            return name && age && gender && city; // 返回是否所有欄位都有填寫
+        }
+
+        function addDataToTable(event) {
+            event.preventDefault(); // 防止表單提交
+
+            if (!validateForm()) {
+                alert("所有欄位都是必填的！");
+                return;
+            }
+
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const gender = document.getElementById("gender").value;
+            const city = document.getElementById("city").value;
+
+            const table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.insertCell(0).innerHTML = name;
+            newRow.insertCell(1).innerHTML = age;
+            newRow.insertCell(2).innerHTML = gender;
+            newRow.insertCell(3).innerHTML = city;
+            newRow.insertCell(4).innerHTML = `<button onclick="deleteRow(this)">刪除</button>`;
+
+            // 清空表單
+            document.querySelector("form").reset();
+            
+            // 更新 localStorage
+            updateLocalStorage();
+        }
+
+        function updateLocalStorage() {
+            const table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+            const rows = Array.from(table.rows).map(row => {
+                return {
+                    name: row.cells[0].innerHTML,
+                    age: row.cells[1].innerHTML,
+                    gender: row.cells[2].innerHTML,
+                    city: row.cells[3].innerHTML
+                };
+            });
+            localStorage.setItem("arr", JSON.stringify(rows));
+        }
+
+        function deleteRow(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            updateLocalStorage(); // 刪除後更新 localStorage
+        }
+
+        function loadDataFromLocalStorage() {
+            const data = JSON.parse(localStorage.getItem("arr")) || [];
+            const table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+
+            data.forEach(item => {
+                const newRow = table.insertRow();
+                newRow.insertCell(0).innerHTML = item.name;
+                newRow.insertCell(1).innerHTML = item.age;
+                newRow.insertCell(2).innerHTML = item.gender;
+                newRow.insertCell(3).innerHTML = item.city;
+                newRow.insertCell(4).innerHTML = `<button onclick="deleteRow(this)">刪除</button>`;
+            });
+        }
+
+        // 當頁面加載完成時，從 localStorage 加載資料
+        window.onload = loadDataFromLocalStorage;
+    </script>
+</head>
+<body>
+    <div class="a1">
+        <p>吃雞排</p>
+        <form onsubmit="addDataToTable(event)">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="age">年齡:</label>
+            <input type="number" id="age" name="age" required><br><br>
+            
+            <label for="gender">性別:</label>
+            <select id="gender" name="gender" required>
+                <option value="">請選擇</option>
+                <option value="male">男</option>
+                <option value="female">女</option>
+                <option value="other">其他</option>
+            </select><br><br>
+            
+            <label for="city">城市:</label>
+            <select id="city" name="city" required>
+                <option value="">請選擇</option>
+                <option value="taipei">台北</option>
+                <option value="kaohsiung">高雄</option>
+                <option value="taichung">台中</option>
+                <option value="other">其他</option>
+            </select><br><br>
+            
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <div class="a2">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年齡</th>
+                    <th>性別</th>
+                    <th>城市</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 新增的資料將會放在這裡 -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

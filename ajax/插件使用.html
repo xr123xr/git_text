@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <form action="javascript:;" class="login-form">
+        <input type="text" id="username" name="username" placeholder="用戶名">
+        <input type="password" id="password" name="password" placeholder="密碼">
+        <input class="btn" type='button' value="登錄" id="login">
+    </form>
+    <script>
+        document.querySelector('.btn').addEventListener('click', () => {
+            // 使用 jQuery 的 serialize 方法並設置 hash: true
+            const data = $('.login-form').serializeArray().reduce((obj, item) => {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+
+            // 將對象轉換為 JSON 字符串
+            const jsonData = JSON.stringify(data, null, 2); // 格式化輸出
+            console.log(jsonData); // 打印 JSON 格式的數據
+        });
+    </script>
+</body>
+</html>

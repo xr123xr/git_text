@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="formdata" action="">
+        <label for="">阿</label>
+        <input type="file" id="fileInput">
+        <img src="" alt="" id="imagePreview">
+        <input type="text" id="textInput">
+    </form>
+    <button class="btn">提交</button>
+    <script>
+        // 定義 serialize 函數
+        function serialize(data) {
+            return JSON.stringify(data);
+        }
+
+        document.querySelector('.btn').addEventListener('click', () => {
+            const formData = document.querySelector('.formdata');
+            const fileInput = document.getElementById('fileInput');
+            const textInput = document.getElementById('textInput');
+
+            // 準備要序列化的數據
+            const data = {
+                hash: true,
+                empty: true,
+                fileName: fileInput.files.length > 0 ? fileInput.files[0].name : null,
+                text: textInput.value
+            };
+
+            // 使用 serialize 函數
+            const serializedData = serialize(data);
+            console.log(serializedData);
+        });
+    </script>
+</body>
+</html>

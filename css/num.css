@@ -1,0 +1,98 @@
+.a10{
+  width: 100%;
+  height: 90px;
+  background-color:#fcfbf9;
+  display: flex;
+  align-items: center; /* 垂直居中 */ 
+  position: fixed;
+  z-index: 1;
+  
+  }
+ .a10 ul li {
+    display: inline-block; /* 使列表項目水平排列 */
+    margin: 30px 25px; /*添加左右邊距 */
+ }
+#pitch{
+    width: 74px;
+    height: 71.03px;
+    margin-left: 45px;
+    margin-top: 5px;
+}S
+.a1 {
+    width: 100%; /* 將寬度改為 100% */
+    max-width: 808px; /* 如果需要最大寬度限制 */
+    height: 90px;
+    background-color: #fcfbf9;
+    margin: auto; /* 將 A1 居中 */
+    /* text-align: center; 文字居中 */
+    position: relative;
+    
+}
+.a2{
+    width: 137.15px;
+    height: 90px;
+    background-color: #926f2f;
+    display: flex;
+    margin-left: auto; /* 自動推向右側 */
+    
+}
+.a3{
+    width: 102.85px;
+    height: 90px;
+    background-color: #c19546;
+    display: flex;
+
+}
+.a1 ul li {
+    display: inline-block; /* 使列表項目水平排列 */
+    margin: 30px 25px; /*添加左右邊距 */
+}
+
+.a1 ul li a {
+    font-weight: bolder;
+    font-size: 18px;
+    text-decoration: none;
+    white-space: nowrap;
+    }
+
+.a21 {
+    width: 40px;
+    height: 40px;
+    margin-top: 22px;
+    margin-left: 25px;
+
+}
+.a21 .iconfont  {
+    font-size: 35px;
+    color: #fcfbf9;
+    display: inline-block; /* 確保能夠正確顯示 */
+} 
+.a22{
+    margin-top: 35px;
+    font-weight: bolder;
+    color:#ffffff
+}
+.a23{
+    width: 40px;
+    height: 40px;
+    margin-top: 22px;
+    margin-left: 20px;
+
+
+}
+.a23 .iconfont  {
+    font-size: 35px;
+    color: #fcfbf9;
+    display: inline-block; /* 確保能夠正確顯示 */
+}    
+
+.a24{
+    margin-top: 35px;
+    font-weight: bolder;
+    color:#ffffff
+}
+.z1 {
+
+    margin-top: 10px;
+    margin-left: 100px;
+}

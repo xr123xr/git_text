@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="resu"></p>
+    <script>
+        
+        function myAxio(config)  {
+            return new Promise((resolve, reject) => {
+                
+            
+            const xhr = new XMLHttpRequest();
+            if(config.params) {
+                const params = new URLSearchParams(config.params).toString();
+                config.url += '?' + params;
+            }
+
+            xhr.open(config.method || 'GET', config.url);
+            xhr.addEventListener('loadend', () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(JSON.parse(xhr.response));
+                } else {
+                    reject(new Error(xhr.response));
+                }
+            });
+            xhr.send()
+        }
+    )};
+        myAxio({
+            url: 'http://hmajax.itheima.net/api/area',
+            
+            params: {
+                pname:'浙江省',
+                cname:'杭州市',
+            },
+            
+        }).then(results => {
+            console.log('成功', results);
+            document.querySelector('.resu').innerHTML = results.list.join('<br>');
+        }).catch(error => {
+            console.error('失敗', error);
+        });
+    </script>
+</body>
+</html>

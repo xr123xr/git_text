@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a1 {
+            width: 700px;
+            height: auto;
+            margin: 0px auto;
+            justify-content: center;
+            align-items: center;
+        }
+        .a1 form {
+            display: flex;
+           
+            align-items: center; /* 置中 */
+        }
+        .a1 p {
+            text-align: center;
+        }
+        .a2 {
+            width: 700px;
+            height: auto;
+            margin: 0px auto;
+        }
+        .a2 ul {
+            display: flex;
+            list-style-type: none; /* 去除預設的標頭樣式 */   
+            padding: 0px;   
+        }
+        .a2 li {
+            text-align: center;
+            flex: 1; /* 使每個列表項目平分可用空間 */
+            background-color: aquamarine;
+            border: 1px solid rgb(233, 233, 233);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid rgb(233, 233, 233);
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        //未完成
+        function validateForm(event) {
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const gender = document.getElementById("gender").value;
+            const city = document.getElementById("city").value;
+
+            if (!name || !age || !gender || !city) {
+                alert("所有欄位都是必填的！");
+                event.preventDefault(); // 防止表單提交
+            }
+        }
+
+        function addDataToTable(event) {
+            event.preventDefault(); // 防止表單提交
+
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const gender = document.getElementById("gender").value;
+            const city = document.getElementById("city").value;
+
+            const table = document.getElementById("dataTable");
+            const newRow = table.insertRow();
+
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+
+            cell1.innerHTML = name;
+            cell2.innerHTML = age;
+            cell3.innerHTML = gender;
+            cell4.innerHTML = city;
+
+            // 清空表單
+            document.querySelector("form").reset();
+        }
+    </script>
+</head>
+<body>
+    <div class="a1">
+        <p>吃雞排</p>
+        <form onsubmit="addDataToTable(event)">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="age">年齡:</label>
+            <input type="number" id="age" name="age" required><br><br>
+            
+            <label for="gender">性別:</label>
+            <select id="gender" name="gender" required>
+                <option value="">請選擇</option>
+                <option value="male">男</option>
+                <option value="female">女</option>
+                <option value="other">其他</option>
+            </select><br><br>
+            
+            <label for="city">城市:</label>
+            <select id="city" name="city" required>
+                <option value="">請選擇</option>
+                <option value="taipei">台北</option>
+                <option value="kaohsiung">高雄</option>
+                <option value="taichung">台中</option>
+                <option value="other">其他</option>
+            </select><br><br>
+            
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <div class="a2">
+      
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年齡</th>
+                    <th>性別</th>
+                    <th>城市</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 新增的資料將會放在這裡 -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

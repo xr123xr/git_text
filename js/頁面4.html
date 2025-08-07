@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../html/font/iconfont.css">
+</head>
+<style>
+    body{
+        background-color: rgb(211, 211, 211);
+    }
+    .a1{
+        display: flex;
+        flex-direction: column; /* 設置為垂直排列 */
+        width: 500px;
+        height: 700px;
+        background-color: aquamarine;
+        border: 1px solid rgb(233, 233, 233);
+        margin: 0px auto;
+    }
+    input{
+        margin: 30px 30px 50px 80px;
+        width: 300px;
+        height: 50px;
+    }
+    #sub{
+        width: 100px;
+        height: 50px;
+        background-color: bisque;
+        border: 1px solid rgb(233, 233, 233);
+        margin: 0px auto;
+
+    }
+    /* form {
+        text-align: center; 
+    }*/
+    .a3{
+        margin: auto 0px;
+        cursor: pointer; /* 懸停時變為手形光標 */
+        
+       
+        font-size: 16px;
+        
+        
+    }
+    .a4{
+        display: flex;
+    }
+    .a4 input{
+        width: 240px;
+        height: 50px;
+        margin: 30px 0px 50px 80px;
+    }
+    .a5{
+        border: 1px solid #000;  
+        height: 55px;
+        width: 60px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        background-color: rgb(255, 255, 255);
+    }
+    .b1{
+        display: flex;
+    }
+    .b1 i{
+        margin-top: 20px ;
+        margin-left: 150px;
+    }
+</style>
+<body>
+
+        <div class="a1">
+            <input type="text" placeholder="輸入您的名字" required maxlength="20" name="name"  >
+            <span></span>
+            <input type="password" placeholder="密碼至少包含字母、特殊字符,數字兩種8~20位" required maxlength="20" name="paw" >
+
+            <span></span>
+            <input type="password" placeholder="確認密碼" required maxlength="20" name="paw1">
+            <span></span>
+            <div class="a4">
+                <input type="text" placeholder="驗證碼" required maxlength="20" name="mag"><div class="a5"><span class="a3">發送驗證碼</span></div>
+            </div>    
+            <span class="a6"></span>
+            <input type="text" placeholder="手機號碼" required maxlength="20" name="phone" >
+            <span></span>
+            <div class="b1">
+                <i><span class="iconfont icon-sousuo"></span></i>
+                <p>確認協議</p>
+            </div>    
+            
+            <form action="">
+                <input id="sub" type="submit" value="提交">
+            </form>
+            
+        </div>    
+    <script>
+        const a3 = document.querySelector(".a3")
+        let flag = true
+        if(true){
+            let num = 5
+            flag = false
+            a3.addEventListener("click",function(){
+           
+                if(num===5){
+                    
+                    const timid = setInterval(function(){
+                    num--
+                    a3.innerHTML = `${num}秒後重新獲取`
+                    
+                    
+                    if(num===0){
+                        clearInterval(timid)
+                        a3.innerHTML = "重新獲取"
+                        num = 5;
+                        flag = true
+                    }
+                },1000)
+            }
+        })
+        }
+
+        const name = document.querySelector("[name=name]")
+        function vall(){
+            let gg = true
+            name.addEventListener("change",function(){
+            
+                const span = name.nextElementSibling
+                const reg = /^[0-9a-zA-Z-_]{6,16}$/g;
+                if(!reg.test(name.value)){
+                    span.innerHTML = `請輸入6~16英文數字`
+                    return false
+                    
+                }else{
+                   span.innerHTML = "" 
+                   return gg
+                }            
+        })
+        const phone = document.querySelector("[name=phone]")
+        phone.addEventListener("change",function(){
+            
+                const span = phone
+                const re =  /^[0-9]{10}$/g;
+                if(!re.test(phone.value)){
+                    span.innerHTML = `請輸入10位數字的手機號碼`
+                    return false
+                }else{
+                   span.innerHTML = "" 
+                   return gg
+                }            
+        })
+
+        const mag = document.querySelector("[name=mag]")
+        mag.addEventListener("change",function(){
+            
+                const span = document.querySelector(".a6")
+                const rea =  /^[0-9]{6}$/g;
+                if(!rea.test(mag.value)){
+                    span.innerHTML = `輸入錯誤`
+                    return false
+                }else{
+                   span.innerHTML = "" 
+                   return gg
+                }            
+        })
+        
+        const paw = document.querySelector("[name=paw]")
+        paw.addEventListener("change",function(){
+            
+                const span =paw.nextElementSibling
+                const r =  /^(?![a-zA-Z]+$)(?!\d+$)(?![^\da-zA-Z\s]+$).{8,20}$/
+                if(!r.test(paw.value)){
+                    span.innerHTML = `輸入錯誤`
+                    return false
+                }else{
+                   span.innerHTML = "" 
+                   return gg
+                }            
+        })
+        const paw1 = document.querySelector("[name=paw1]")
+        paw1.addEventListener("change",function(){
+            
+                const span =paw1.nextElementSibling
+               
+                if(paw1.value!==paw.value){
+                    span.innerHTML = `輸入錯誤`
+                    return false
+                }else{
+                   span.innerHTML = "" 
+                   return gg
+                }            
+        })
+        }
+
+        const i = document.querySelector(".icon-sousuo")
+        i.addEventListener("click",function(){
+            this.classList.toggle("icon-youtube")
+            
+        })
+        const form = document.querySelector("form")
+        form.addEventListener("submit",function(e){
+            if(!i.classList.contains("icon-youtube")){
+                alert("協議")
+                e.preventDefault()
+            }
+            if(!vall()) e.preventDefault()
+        })
+    </script>
+</body>
+</html> 

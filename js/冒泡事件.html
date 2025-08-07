@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .fn{
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+    }
+    .son{
+        width: 300px;
+        height: 300px;
+        background-color: aquamarine;
+    }
+</style>
+<body>
+    <div class="fn">
+        <div class="son"></div>
+    </div>
+    <script>
+        const fn = document.querySelector(".fn")
+        const son = document.querySelector(".son")
+        document.addEventListener("click",function(){
+            alert(1);
+            
+        })
+        fn.addEventListener("click",function(){
+            alert(2);
+            
+        })
+        son.addEventListener("click",function(e){
+            alert(3);
+            e.stopPropagation()
+        })
+    </script>
+</body>
+</html>

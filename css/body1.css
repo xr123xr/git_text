@@ -1,0 +1,125 @@
+
+.bo1{
+    top: 90px;
+    width: 100%; /* 設置寬度 */
+    height: 400px; /* 設置高度 */
+    background-image: url("https://www.discoverystarvillage.com.tw/upload-files/gallery/Designer-08.jpg"); /* 設置背景圖片 */
+    background-size: cover; /* 確保圖片覆蓋整個容器 */
+    background-position: center; /* 中心對齊圖片 */
+    position: relative; /* 使容器相對定位 */
+    
+}
+.bo2{
+    display: flex;                /* 使用 Flexbox */
+    flex-direction: column;
+    justify-content: center;      /* 水平居中 */
+    align-items: center;          /* 垂直居中 */
+    height: 400px;                /* 設定容器高度 */
+    /* border: 1px solid #000;      可選，為了更清楚看到容器 */
+    position: absolute; /* 絕對定位 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* 設置覆蓋色和透明度 */
+    /* 可以調整rgba中的顏色和透明度 */
+
+}
+.bo2 p{
+    color: rgb(192, 149, 71);
+    font-size: 20px;
+}
+.bo3{
+    width: 90%;
+    height: 70px;
+    top: 500px;
+    left: 5%; /* 水平居中 */
+    position: absolute; /* 絕對定位 */
+    display: flex;
+    flex-direction: column;
+}
+.bo4{
+    width: 100%;
+    height: 19px;
+    display: flex;
+    justify-content: flex-end; /* 將項目靠右對齊 */
+} 
+.bo4 {
+    margin: 0px;
+}   
+.bo4 a{
+    font-size: 12px;
+    font-weight: 300;
+    color: rgb(192, 149, 71);
+    font-family:"Noto Serif TC";
+}
+.bo4 span{
+    padding: 0px 2px;
+    color: rgb(192, 149, 71);
+}
+.bo4 .iconfont{
+    margin-top: -5px;
+}
+#bo5{
+    color: rgb(0, 0, 0);
+}
+.bo6{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    list-style: none; /* 去掉標頭 */
+    justify-content: center;
+    margin: 0px;
+    position: relative;
+     text-align: center; /*將文本置中 */
+   
+
+}
+/* .bo7{
+    width: 100%;
+    height: 100%;
+} */
+
+.bo6 li{
+    /* width:120px ;
+    height: 50px; */
+    width: 130px;
+    height: 100%;
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+ }  
+.bo6 li a{ 
+    font-size: 20px;
+    font-family: "Noto Serif TC";
+    margin-top: -5px;
+    margin: 0px auto;
+    
+    
+    /* padding-top:12px ;
+    padding-left: 8px; */
+}
+/* .bo6 span{
+    padding: 0px 15px;
+    justify-content: center;       水平居中 
+    font-size: 20px;
+    font-weight: 200;
+    font-family:"Noto Serif TC";
+   color: rgb(211, 211, 211)
+   
+} */
+.bo6 li::after {
+    content: ""; /* 這是必須的，讓伪元素顯示 */
+    /* position: absolute; 絕對定位 */
+    right: 0; /* 靠右 */
+    top: 25px; /* 從頂部開始 */
+    height: 50%; /* 調整豎線的高度 */
+    width: 1px; /* 豎線的寬度 */
+    background-color: rgb(211, 211, 211); /* 豎線顏色 */
+}
+.bo8{
+    width: 134px;
+    height: 30px;
+    background-color: rgb(192, 149, 71);
+    color:rgb(255,255,255)
+}

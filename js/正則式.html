@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    .xj{
+        color: red;
+        background: url(../c.jpg);
+    }
+    .g{
+        color: green;
+        background: url(../g.png);
+    }
+</style>
+<body>
+    <input type="text"><span></span>
+
+    <script>
+        const arr = /^[a-zA-Z0-9-_]{6,16}$/
+        const input = document.querySelector("input")
+        const span = document.querySelector("span")
+        input.addEventListener("blur",function(){
+            if(arr.test(input.value)){
+                span.innerHTML = "可用"
+                span.className = "g"
+            }else{
+                span.innerHTML = "錯誤"
+                span.className = "xj"
+            }
+        })
+    </script>
+</body>
+</html>

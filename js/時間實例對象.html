@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 100px;
+        border: 1px solid #000;
+    }
+</style>
+<body>
+    <div></div>
+    <script>
+        const dat = new Date()
+        const div = document.querySelector("div")
+        div.innerHTML=dat.toLocaleString()
+        setInterval(function(){
+            const dat = new Date()
+            div.innerHTML=dat.toLocaleString()
+        },1000)
+       
+        
+    </script>
+</body>
+</html>

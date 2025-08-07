@@ -1,0 +1,25 @@
+.c{
+    width: 400px;
+    height: 90px;
+    display: flex;
+    flex-direction: column; /* 設置為垂直排列 */
+    display: none;
+
+}
+.name{
+    flex:1
+}
+.name h3{
+    font-size: 14px;
+    color: pink;
+}
+.p{
+    flex: 4;
+}
+.date{
+    flex: 1;
+}
+.date p{
+    font-size: 10px;
+    color: rgb(200,200,200);
+}

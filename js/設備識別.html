@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設備檢測</title>
+    <script>
+        function redirectToDevicePage() {
+            const userAgent = navigator.userAgent;
+
+            if (/Windows/i.test(userAgent)) {
+                window.location.href = "https://www.bilibili.com/"; // PC端網頁
+            } else if (/Macintosh/i.test(userAgent)) {
+                window.location.href = "https://www.ptt.cc/bbs/ArenaOfValor/index.html"; // 蘋果端網頁
+            } else if (/Android/i.test(userAgent)) {
+                window.location.href = "android.html"; // 安卓端網頁
+            } else if (/iPhone|iPad/i.test(userAgent)) {
+                window.location.href = "https://forum.gamer.com.tw/A.php?bsn=23805"; // iOS端網頁
+            } else {
+                window.location.href = "https://www.google.com/search?q=%E5%A4%A9%E6%B0%A3&rlz=1C1FKPE_zh-TWTW1037TW1039&oq=&gs_lcrp=EgZjaHJvbWUqCQgEECMYJxjqAjIJCAAQIxgnGOoCMgkIARAjGCcY6gIyCQgCECMYJxjqAjIJCAMQIxgnGOoCMgkIBBAjGCcY6gIyCQgFECMYJxjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQg4MzFqMGoxNagCCLACAQ&sourceid=chrome&ie=UTF-8"; // 默認網頁
+            }
+        }
+
+        window.onload = redirectToDevicePage;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

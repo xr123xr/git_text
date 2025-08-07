@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 300px;
+            display: flex;
+            flex-direction: column; /* 設置為垂直排列 */
+        }
+        .box1 {
+            width: 100%;
+            height: 80%;
+        }
+        .box1 img {
+            width: 100%;
+            height: 100%;
+        }
+        .box2 {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255,192,203);
+            box-shadow: 0px -15px 10px rgba(255,192,203, 0.9); /* 只在上方的陰影 */
+        }
+        .box2 p {
+            margin-top: 10px;
+            margin-bottom: 0px;
+        }
+        .box4{
+            display: flex;
+        }
+        .box5{
+            margin-left: 400px;
+            margin-top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(255, 255, 255,0.2);
+            position: absolute;
+            display: grid; /* 啟用 Grid */
+            place-items: center; /* 同時水平和垂直居中 */
+        }
+        .box6{
+            margin-left: 430px;
+            margin-top: 10px;
+            margin-top: 10px;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-color: rgb(255, 255, 255,0.2);
+            display: grid; /* 啟用 Grid */
+            place-items: center; /* 同時水平和垂直居中 */
+        }
+        .box3 {
+            display: flex; /* 使用 Flexbox 進行排列 */
+            margin: 0px;
+            list-style-type: none; /* 去除預設的標頭樣式 */
+        }
+        .box3 li {
+            margin: 5px;
+            cursor: pointer;
+            transition: 0.3s; /* 平滑過渡效果 */
+            height: 10px; /* 圓點高度 */
+            width: 10px; /* 圓點寬度 */
+             border-radius: 50%;/* 圓形 */
+            background-color: gray; /* 默認顏色 */
+
+        }
+        .box3 li.active {
+            background-color: white; /* 選中顏色 */
+            height: 13px; /* 圓點高度 */
+            width: 13px; /* 圓點寬度 */
+        }
+    </style>   
+</head>
+<body>
+    <div class="box">
+        <div class="box1">
+            <img src="../ck1.jpg" alt="6">
+        </div>
+        <div class="box2">
+            <div class="box4">
+                <p>機肉</p>
+                <div class="box5"> &lt; </div>
+                <div class="box6"> &gt; </div>
+            </div>
+            <ul class="box3">
+                <li class="active"></li> <!-- 初始圓點設為 active -->
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let arr = [
+            { url: "../ck1.jpg", title: "大雞腿", color: "rgb(3,34,12)" },
+            { url: "../ck2.jpg", title: "炸機", color: "rgb(74,85,23)" },
+            { url: "../ck3.jpg", title: "肉", color: "rgb(53,6,97)" },
+            { url: "../ck4.jpg", title: "美女1", color: "rgb(255,255,255)" },
+            { url: "../ck5.jpg", title: "美女2", color: "rgb(255,255,255)" },
+            { url: "../ck6.jpg", title: "美女3", color: "rgb(255,255,255)" }
+        ];
+        
+        const img = document.querySelector(".box1 img");
+        const p = document.querySelector(".box2 p");
+        const color = document.querySelector(".box2")
+        const dots = document.querySelectorAll(".active");
+        const box = document.querySelector(".box")
+        let i = 0;
+        // let time
+        box.addEventListener("mouseenter",function(){
+            clearInterval(time); // 停止定時器
+        })
+        box.addEventListener("mouseleave", function() {
+            clearInterval(time)
+            time = setInterval(function(){
+            img1.click()
+            },1000)
+            })
+        const img1=document.querySelector(".box6")
+        img1.addEventListener("click" , function () {
+           
+            i++;
+            // console.log(i);
+            
+            if (i === arr.length) {
+                i = 0; // 重置到第一個
+            }
+           toggin()
+        })
+        const img2=document.querySelector(".box5")
+        img2.addEventListener("click" , function () {
+         
+            i--;
+            
+            if (i < 0) {
+                i = 7; // 重置到第一個
+            }
+            toggin()
+            
+        })
+       
+        function toggin(){
+            img.src=arr[i].url
+            p.innerHTML=arr[i].title
+            color.style.backgroundColor=arr[i].color
+
+            
+            document.querySelector(`.box3 .active`).classList.remove("active")
+            document.querySelector(`.box3 li:nth-child(${i+1})`).classList.add("active")
+        }
+        let time = setInterval(function(){
+            img1.click()
+        },1000)
+    </script>
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1{
+        width: 500px;
+        height: 300px;
+        margin: 50px 40%;
+        background-color: bisque;
+        display: flex;
+        flex-direction: column
+    }
+    .box1 h3{
+        text-align: center;
+        margin: 0px;
+    }
+    .box1 p{
+        line-height: 8;
+        font-size: 20px;
+        text-align: center;
+        margin: 0px;
+    }
+    .box1 button{
+        width: 50px;
+        height: 30px;
+        margin: 0px 45%;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="box1">
+        <h3>隨機問答</h3>
+        <p>問題:<span id="question">炸機</span></p>
+        <button class="btn1">開始</button>
+        <button class="btn2">停止</button>
+    </div>
+    <script>
+        const arr=[ {text:"雞排"},{text:"貢丸"},{text:"花枝丸"},{text:"烤肉"}]
+        const span=document.querySelector("#question")
+        const button1=document.querySelector(".btn1")
+        const button2=document.querySelector(".btn2")
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+}
+        const rond = getRandomInt(0,arr.length)
+        let i= 0
+        let pig
+        button1.addEventListener("click", function () {
+        pig=setInterval(function (){
+            console.log(rond);
+            
+            i++
+            if(i===arr.length){
+                i=0
+            }
+            span.innerHTML=arr[i].text
+            
+            
+
+            
+        },10) })
+        button2.addEventListener("click", function () {
+            if(arr.length===1){
+                button1.disabled=button2.disabled=true
+            }
+            clearInterval(pig); // 停止定時器
+            span.innerHTML = arr[getRandomInt(0, arr.length)].text; // 顯示隨機問題
+            
+            arr.splice(i,1)
+            console.log(arr);
+
+        });
+
+
+
+
+    </script>
+</body>
+</html>

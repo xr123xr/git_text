@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .a2{
+        width: 500px;
+        height: 50px;
+        margin: 50px;
+        background-color: aqua;
+        
+        
+    }
+    .a{
+        text-decoration: none; /* 去除下劃線 */
+        flex: 1;
+        color: #000;
+    }
+
+        
+    
+    .a4{
+        display: flex;
+    }
+    .a3{
+        width: 40px;
+        height: 10px; /* 增加高度以顯示為分隔線 */
+        background-color: pink;
+        margin-top: 20px; /* 增加左邊距以分隔 */
+        transition: transform 0.3s ease; /* 添加平滑過渡效果 */
+        /* position: absolute; 絕對定位 */
+        
+    }
+</style>
+<body>
+    <div class="a2">
+        <div class="a4">
+            <a href="#" class="a">番劇</a>
+            <a href="#" class="a">熱門</a>
+            <a href="#" class="a">日常</a>
+            <a href="#" class="a">北七</a>
+            <a href="#" class="a">痾</a>
+        </div>
+        <div class="a3"></div>          
+    </div>
+    <script>
+        const a1 = document.querySelector(".a2")
+        const a = document.querySelector(".a3")
+        a1.addEventListener("click",function(e){
+            if(e.target.tagName==="A"){
+                a.style.transform=`translateX(${e.target.offsetLeft}px)`
+                    
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>註冊</button>
+    <script>
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', () => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://hmajax.itheima.net/api/register');
+            xhr.addEventListener('loadend', () => {
+                console.log(xhr.response);
+                
+            });
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            const strobj = {
+                username:'ithame1223',
+                password:'123456'
+            }
+            const jsonstr = JSON.stringify(strobj);
+            xhr.send(jsonstr);
+        });
+    </script>
+</body>
+</html>

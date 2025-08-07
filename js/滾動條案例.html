@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        body{
+            height: 3000px;
+        }
+        .a1{
+            width: 500px;
+            height: 700px;
+            background-color: blanchedalmond;
+            margin:0px 25%  ;
+        }
+        .a2{
+            width: 80px;
+            height: 150px;
+            background-color: aqua;
+            position: fixed;
+            top: 50px; /* 使用 top */
+            right: 60px; /* 使用 right */
+            opacity: 0;
+            transition: opacity 0.5s ease; /* 漸變效果 */
+        }
+        .a2 ul{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none; /* 去除預設的標頭樣式 */
+            flex-direction: column; /* 設置為垂直排列 */
+            text-align: center;
+            
+        }
+        .a2 li{
+            flex: 1;
+            border: 1px solid #000;
+        }
+    </style>
+<body>
+    <div class="a1"></div>
+    <div class="a2">
+        <ul>
+            <li><a href="" class="name">1</a></li>
+            <li><a href="" class="name">2</a></li>
+            <li><a href="" id="a">返回</a></li>
+        </ul>
+    </div>
+    <script>
+        const a2 = document.querySelector(".a2")
+        window.addEventListener("scroll",function(){
+            const n = document.documentElement.scrollTop 
+            if( n >= 300){
+                a2.style.opacity=1
+            }else{
+                a2.style.opacity=0
+            }
+        })
+        const back = document.querySelector("#a")
+        back.addEventListener("click",function(e){
+            // e.preventDefault()
+            document.documentElement.scrollTop=0
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+        href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css"
+        rel="stylesheet"
+        />
+    <style>
+        html, body {
+            height: 100%; /* 設置 html 和 body 的高度為 100% */
+            margin: 0; /* 去除默認邊距 */
+        }
+        .box {
+            display: flex;
+            height: 100%; /* 設置 box 的高度為 100% */
+        }
+        .cli {
+            background-color: black;
+            width: 10%;
+            height: 100%;
+        }
+        .pos {
+            width: 80%;
+            height: 100%;
+        }
+        .cli p, h1 {
+            color: antiquewhite;
+        }
+        .upload-box {
+            width: 200px; /* 方框寬度 */
+            height: 200px; /* 方框高度 */
+            border: 2px dashed #ccc; /* 虛線邊框 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer; /* 鼠標懸停顯示手形 */
+            background-color: white; /* 方框背景顏色 */
+        }
+        .upload-box img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none; /* 初始隱藏圖片 */
+        }
+        .upload-box .plus-sign {
+            font-size: 50px; /* + 號大小 */
+            color: #aaa; /* + 號顏色 */
+        }
+        input[type="file"] {
+            display: none; /* 隱藏文件輸入框 */
+        }
+        .pitch{
+            display: flex;
+        }
+         #editor—wrapper {
+            border: 1px solid #ccc;
+            z-index: 100; /* 按需定义 */
+        }
+        #toolbar-container {
+            border-bottom: 1px solid #ccc;
+        }
+        #editor-container {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="cli">
+            <h1>北七頭條</h1>
+            <p>管理文章</p>
+            <p>發布文章</p>
+        </div>
+        <div class="pos">
+            <div>
+                <form action="">
+                    <h2>發布文章</h2>
+                    <div>
+                        <label for="">標題:</label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label for="">文章分類 :</label>
+                        <select name="" id="">分類</select>
+                            <option value=""></option>
+
+                    </div>
+                    <div class="pitch">
+                        <div>
+                            <h3>封面 :</h3>
+                        </div>
+                        
+                        <div class="upload-box" id="uploadBox">
+                            
+                            <span class="plus-sign">+</span>
+                            <img id="previewImage" alt="預覽圖片">
+                            <input type="file" id="fileInput" accept="image/*">
+                        </div>
+                    </div>
+                    
+
+                    <div> 
+                        <p>內容</p>
+                            <div id="editor—wrapper">
+                                <div id="toolbar-container"><!-- 工具栏 --></div>
+                                <div id="editor-container"><!-- 编辑器 --></div>
+                            </div>
+                        <button class="btn">發布</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./封裝工具/requst.js"></script>
+        <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+     <script src="./封裝工具/index1.js">
+
+       
+
+         
+    </script>
+</body>
+</html>

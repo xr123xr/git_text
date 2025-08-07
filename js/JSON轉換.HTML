@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>用戶名</p>
+    <script>
+        const obj = {
+            name:"竹鼻",
+            age:19,
+            gender:"女"
+        }
+        localStorage.setItem("obj",JSON.stringify(obj))
+        // console.log(obj);
+        
+        console.log(JSON.parse(localStorage.getItem("obj")));
+        const p =document.querySelector("p")
+        p.innerHTML = `用戶名${obj.name}`
+        
+    </script>
+</body>
+</html>

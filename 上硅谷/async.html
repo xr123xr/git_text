@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <label for="province">選擇省份:</label>
+    <select id="province" name="province" onchange="updateCities()">
+        <option class="prov"></option>
+        
+    </select>
+
+    <label for="city">選擇城市:</label>
+    <select id="city" name="city">
+        <option class="city" value=""></option>
+    </select>
+
+     <label for="area">選擇鎮:</label>
+    <select id="area" name="area">
+        <option class="area" value=""></option>
+    </select>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        async function getData(){
+        try {
+            const pObj = await axios({url:'http://hmajax.itheima.net/api/provinced' });
+            const pname = pObj.data.list[0]
+            const cObj = await axios({url:'http://hmajax.itheima.net/api/city',paranms:{pname} });
+            const cname = cObj.data.list[0];
+            const aObj = await axios({url:'http://hmajax.itheima.net/api/area', params:{pname,cname} });
+            const aname = aObj.data.list[0]
+
+            document.querySelector(".prov").innerHTML = pname
+            document.querySelector(".city").innerHTML = cname
+            document.querySelector(".area").innerHTML = aname
+        } catch (error) {
+            console.dir(error)
+        }
+    }
+        getData()
+    </script>
+
+</body>
+</html>

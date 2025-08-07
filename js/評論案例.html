@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../html/font/iconfont.css">
+    <link rel="stylesheet" href="1.css">
+</head>
+<style>
+     *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        text-decoration: none; /* 去除下劃線 */
+    }
+    .box1{
+        width: 450px;
+        height: 60px;
+        display: flex;
+    }
+    .box2{
+        width: 50px;
+        height: 50px;
+
+    }
+    .iconfont{
+        font-size: 50px;
+    }
+    .box3{
+        width: 300px;
+        height: 100%;
+    }
+    input{
+        width: 300px;
+        height: 45px;
+        transition: all 0.3s;
+        background-color: rgb(241, 241, 241);
+        border: 0px;
+    }
+    input:focus{
+        height: 50px;
+    }
+    .box4{
+        width: 50px;
+        height: 50px;
+        display: flex; /* 使用 Flexbox */
+        justify-content: center; /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        background-color: aqua;
+        margin-left: 10px;
+        border: 1px solid #000;
+
+
+    }
+    .box4 p{
+        text-align: center;
+        color: aliceblue;
+        
+    }
+    .box3 p{
+        text-align: right; /* 文字靠右 */
+        font-size: 10px;
+        color: rgb(131, 131, 131);
+        opacity: 0;
+    }
+    
+</style>
+<body>
+    <div class="box1">
+        <div class="box2"><span class="iconfont icon-instagram"></span></div>
+        <div class="box3">
+            <input type="text" placeholder="請輸入文字">
+            <p>0/200字數</p>
+        </div>
+        <div class="box4">
+            <p>發送</p>
+        </div>       
+    </div>
+    <div class="c">
+        <div class="name">
+            <h3>非社長</h3>
+        </div>
+        <div class="p1">
+            <p>jjklkoooi</p>
+        </div>
+        <div class="date">
+            <p>2001-3-5 10:34</p>
+        </div>
+    </div>
+    <script>
+        const input = document.querySelector("input")
+        const p = document.querySelector(".box3 p")
+        const c = document.querySelector(".c")
+        const p1 = document.querySelector(".p1")
+        input.addEventListener("focus",function(){
+            p.style.opacity = 1
+        })
+        input.addEventListener("blur",function(){
+            p.style.opacity = 0
+        })
+        input.addEventListener("input",function(){
+        p.innerHTML= `${input.value.length}/200字數`
+            
+        })
+        input.addEventListener("keyup",function(e){
+            if(e.key==="Enter"){
+                if(input.value.trim()){
+                    c.style.display="block"
+                    p1.innerHTML = input.value
+                    
+                }
+                input.value=""
+                p.innerHTML="0/200字數"
+            }
+        })
+        
+    </script>
+</body>
+</html>

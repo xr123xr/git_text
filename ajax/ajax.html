@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    .result{
+        
+      
+       
+    }
+    .result_item{
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #eee;
+        margin-right: 10px;
+        border-radius: 5px;
+        flex-direction: column; /* 設置為垂直排列 */
+        list-style-type: none; /* 去除預設的標頭樣式 */
+        margin: 20px;
+
+    }
+</style>
+<body>
+    <div class="box">
+        <form id="editForm" class="box2" >
+            <div class="md_3">
+                 <label class="form_label">選擇省份</label>
+                <input type="text" value="北京" name="province" class="form_input" placeholder="請輸入省份">
+            </div>
+            <div>
+                 <label class="form_label">選擇城市</label>
+                <input type="text" value="北京市" name="city" class="form_input1" placeholder="請輸入城市">
+            </div>
+       
+       <form>
+            <button type="button" class="btn_search">查詢</button>
+            <br>
+            <p>查詢結果</p>
+            <ul class="result">
+                <li class="result_item">東城區</li>
+
+            </ul>
+       
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        // axios({
+        //     url:'http://hmajax.itheima.net/api/city',
+        //     params:{
+        //         pname:'河北省'
+        //     }
+        // }).then(results=>{
+            // console.log(results);
+            // document.querySelector('p').innerHTML=results.data.list.join('<br>')
+            document.querySelector('.btn_search').addEventListener('click',()=>{
+                let pName = document.querySelector('.form_input').value
+                let cName = document.querySelector('.form_input1').value
+                axios({
+                    url:'http://hmajax.itheima.net/api/area',
+                    params:{
+                        pname:pName,
+                        cname:cName
+                    }
+                }).then(results=>{
+                    let list = results.data.list;
+                    
+                    console.log(list);
+                    let theli = list.map(arename=>{
+                       return `<li class="result_item">${arename}</li>`
+                    }).join('')
+                    document.querySelector('.result').innerHTML = theli;
+                })
+            })
+        
+    </script>
+</body>
+</html>

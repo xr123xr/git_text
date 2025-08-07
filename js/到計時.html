@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 設定主要容器樣式 */
+        .b1 {
+            width: 300px; /* 容器寬度 */
+            height: 400px; /* 容器高度 */
+            background-color: brown; /* 背景顏色 */
+        }
+        /* 標題樣式 */
+        .b1 h1, .b1 h2 {
+            text-align: center; /* 文字置中 */
+            color: aliceblue; /* 文字顏色 */
+        }
+        /* 設定倒計時顯示區域樣式 */
+        .b2 {
+            width: 100%; /* 寬度100% */
+            height: 100px; /* 高度100px */
+            display: flex; /* 使用 Flexbox 進行佈局 */
+            justify-content: center; /* 水平居中 */
+        }
+        /* 設定每個時間單位的樣式 */
+        .b3, .b4, .b5 {
+            width: 60px; /* 寬度60px */
+            height: 60px; /* 高度60px */
+            background-color: #000; /* 背景顏色 */
+        }
+        /* 設定時間分隔符號樣式 */
+        .b2 span {
+            font-size: 50px; /* 字體大小 */
+            color: aliceblue; /* 文字顏色 */
+        }
+        /* 設定其他文字樣式 */
+        p {
+            font-size: 30px; /* 字體大小 */
+            text-align: center; /* 文字置中 */
+            color: aliceblue; /* 文字顏色 */
+            margin: 10px; /* 外邊距 */
+        }
+    </style>
+</head>
+<body>
+    <div class="b1">
+        <h1>今天是2000年2月22日</h1> <!-- 顯示當前日期 -->
+        <h2>吃飯倒計時</h2> <!-- 顯示倒計時標題 -->
+        <div class="b2">
+            <div class="b3"><p>00</p></div><span>:</span> <!-- 小時 -->
+            <div class="b4"><p>00</p></div><span>:</span> <!-- 分鐘 -->
+            <div class="b5"><p>00</p></div> <!-- 秒 -->
+        </div>
+        <p>18:30吃飯</p> <!-- 提示用餐時間 -->
+    </div>
+    
+    <script>
+      function gettime() {
+            const h1 = document.querySelector(".b1 h1"); // 獲取日期標題元素
+            const data = new Date(); // 獲取當前日期
+            h1.innerHTML = `今天是${data.getFullYear()}年${data.getMonth() + 1}月${data.getDate()}日`; // 更新日期標題
+            
+            const now = new Date(); // 獲取當前時間
+            const lat = new Date('2025-4-30 18:30:00'); // 設定目標時間
+            const time = (lat - now) / 1000; // 計算距離目標時間的秒數
+            
+            // 計算剩餘的時間
+            let h = parseInt(time / 3600 % 24); // 計算小時
+            h = h < 10 ? "0" + h : h; // 小於10的前面加零
+            let m = parseInt(time / 60 % 60); // 計算分鐘
+            m = m < 10 ? "0" + m : m; // 小於10的前面加零
+            let s = parseInt(time % 60); // 計算秒
+            s = s < 10 ? "0" + s : s; // 小於10的前面加零
+            
+            // 更新倒計時顯示
+            const b3 = document.querySelector(".b3 p"); // 獲取小時顯示元素
+            const b4 = document.querySelector(".b4 p"); // 獲取分鐘顯示元素
+            const b5 = document.querySelector(".b5 p"); // 獲取秒顯示元素
+            b3.innerHTML = h; // 更新小時
+            b4.innerHTML = m; // 更新分鐘
+            b5.innerHTML = s; // 更新秒
+      }
+      
+      gettime(); // 初始化倒計時
+      setInterval(gettime, 1000); // 每秒更新一次倒計時
+    </script>
+</body>
+</html>

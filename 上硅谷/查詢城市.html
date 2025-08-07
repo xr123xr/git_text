@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        display: flex;
+        
+    }
+    .box p{
+        margin: 50px;
+    }
+    .box2{
+        display: flex;
+    }
+    .result-item {
+        width: 100PX;
+        height: 30px;
+        border: 1px solid #000;
+        list-style-type: none; /* 去除預設的標頭樣式 */
+
+    }
+</style>
+<body>
+    <div class="box">
+        <P>省</P>
+        <p>城市名字</p>
+        
+    </div>
+    <div class="box2">
+        <input class="wa" type="text" class="input" placeholder="请输入省份">
+        <input class="city" type="text" class="input2" placeholder="请输入城市">
+
+    </div>
+    <button class="query-btn">查询</button>
+    <p>查詢結果</p>
+    <ul>
+        <li class="result-item g8"></li>
+    </ul>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+    <script>
+        document.querySelector('.query-btn').addEventListener('click', () => {
+            const pname = document.querySelector('.wa').value;
+            const cname = document.querySelector('.city').value;
+            
+
+            const obj = {
+                pname,
+                cname
+            }
+            const paeamsObj = new URLSearchParams(obj);
+            const querystring = paeamsObj.toString();
+            console.log(querystring);
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET', `http://hmajax.itheima.net/api/area?${querystring}`); 
+            xhr.addEventListener('loadend',()=>{
+                console.log(xhr.response);
+                const data = JSON.parse(xhr.response);
+                const htmlStr = data.list.map(areaName =>{
+                return  `<li class="result-item">${areaName}</li>`}).join('');
+                document.querySelector('.g8').innerHTML = htmlStr;
+               
+            })
+            xhr.send();
+        })
+        
+    </script>
+</body>
+</html>
